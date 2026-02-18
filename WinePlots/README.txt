@@ -1,0 +1,1 @@
+Goal: Plot some features from the wine dataset to look at potential correlations we might want to run a regression plot 
