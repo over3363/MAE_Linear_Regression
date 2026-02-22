@@ -122,3 +122,37 @@ print(f"Regression Equation: y = {m}x+{b}")
 # this model is a pretty simple one
 
 # now that we have a regression equation now what we really want to be able to do is predict a value 
+# Lets Predict a Value
+# lets get a row, say its row 5
+row = 5 
+# get alcohol value out of that row 
+# using wine dataframe locate (loc) , remember with locate we can put an index for the row (5) and then a name for the column (alcohol) 
+# get alcohol value out of row 5 
+alcohol_val = wine_df.loc[5, "alcohol"]
+# this time going to be wine dataframe row 5 quality value 
+quality_val = wine_df.loc[5, "quality"]
+
+# going to take our regression equation and apply it on the alcohol value to create a quality prediction 
+# then we are going to compare the quality prediction with the actual quality value that exists in the dataset
+# implementing our regression equation 
+predicted_quality = alcohol_val*m + b
+
+# Print statement to figure out how we did 
+# print(f"""text{variable}text""") allows for multiline . newline breaks where you put them
+print(f"""For Alcohol Value {alcohol_val}, the predicted quality was {predicted_quality}. 
+The actual quality is {quality_val}.""")
+
+# Try a random row , see if it will do a good job with every row 
+# row = 1000
+# row = 2000
+# row = 2500
+# alcohol_val = wine_df.loc[row, "alcohol"]
+# quality_val = wine_df.loc[row, "quality"]
+
+# basically this model can see the kind of different rows but most of the time it predicts something pretty close to the average value for quality in general
+# may not be super useful 
+
+# want to quanitify to the best of our ability how much we can trust the model 
+# so we need to create that coefficient of determination 
+
+# Coefficient of Determination 
