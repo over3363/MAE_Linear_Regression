@@ -107,3 +107,18 @@ print(f"Sxx : {Sxx}")
 # have our statistics 
 
 # Get our Line Variables
+# slope m is going to be equal to Sxy divided the Sxx 
+# intercept is going to be y mean minus m times the x mean
+m = Sxy/Sxx
+b = y_mean - m*x_mean
+# Print Regression Line 
+print(f"Regression Equation: y = {m}x+{b}")
+
+# run program : have a regression equation y is equal to kind of a small number times the x variable plus about 5.7
+# so now we have a model 
+# implementing equations directly on our data 
+# for more complex models , the more complex models the calculations are a lot more arduous  
+# wont be implementing the entire models by hand most of the time
+# this model is a pretty simple one
+
+# now that we have a regression equation now what we really want to be able to do is predict a value 
