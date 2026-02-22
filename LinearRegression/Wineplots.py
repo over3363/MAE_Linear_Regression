@@ -67,10 +67,10 @@ x_mean = sum_x/n
 # equal to the sum divided by n the number of samples 
 y_mean = sum_y/n
 
-# sum_x_times_sum_y long variable name
-# sum_x_times_sum_y is equal to wine dataframe of the x value times the wine dataframe at the y value 
+# sum_x_times_y long variable name
+# sum_x_times_y is equal to wine dataframe of the x value times the wine dataframe at the y value 
 # that value is we are going to apply the sum function on 
-sum_x_times_sum_y = (wine_df[x]*wine_df[y]).sum()
+sum_x_times_y = (wine_df[x]*wine_df[y]).sum()
 
 # sum_x_squareds variable name for sum of x squareds
 # wine dataframe at the x value which is alchohol 
@@ -90,5 +90,20 @@ print(f"Sum of X Values: {sum_x}")
 print(f"Sum of Y Values: {sum_y}")
 print(f"Mean X Value : {x_mean}")
 print(f"Mean Y Value : {y_mean}")
-print(f"Sum of X Times Sum of Y : {sum_x_times_sum_y}")
+print(f"Sum of X Times Y : {sum_x_times_y}")
 print(f"Sum of X Sqaureds: {sum_x_squareds}")
+
+# Calculate our Numerator and our Denominator for M calculation 
+# Follow Equation 
+# should be sum x times y not sum x times sum y
+Sxy = sum_x_times_y - (sum_x*sum_y)/n
+
+# Sxx is going to be equal to the sum of x sqaureds minus sum of x times the sum of y divided by n
+Sxx = sum_x_squareds - (sum_x*sum_y)/n
+
+# print(f"Sxy: {Sxy} Sxx: {Sxx}")
+print(f"Sxy : {Sxy}")
+print(f"Sxx : {Sxx}")
+# have our statistics 
+
+# Get our Line Variables
