@@ -156,3 +156,36 @@ The actual quality is {quality_val}.""")
 # so we need to create that coefficient of determination 
 
 # Coefficient of Determination 
+
+# 1st: Get All the Predictions for the entire dataset
+# create a new column in our dataset that we are going to call predictions 
+# can do directly 
+# how we will create that is we will take the entire alcohol row from our dataset multiply it by our m and then we are going to add b
+# and pandas is nice because it lets you do the math directly and then save it as a new column 
+wine_df["predictions"] = wine_df["alcohol"]*m + b
+
+# calculate residual squares
+# equal to the wine dataframe quality the actual outcome variable we care about minus the winedataframe predictions 
+# we are going to square that and then add them all together
+residual_squares = (wine_df["quality"] - wine_df["predictions"]).pow(2).sum()
+
+# get total squares
+# there is total variaation in the model, this is the kinda the varation we see in the error
+# equal to wine dataframe quality so the actual outcome variable minus the y mean the average for the data to the power of two and then take the sum 
+total_squares = (wine_df["quality"] - y_mean).pow(2).sum()
+# so then our r sqaured becomes 1 minus the residual squares divided by the total squares 
+r_squared = 1 - residual_squares/total_squares
+
+print(f"Coefficient of determination: {r_squared}")
+# see our coefficient of determination is pretty low 0.01 so probably not a super useful model 
+# we can verify because when we looked at the correlation plot in the first place it had a very slight positiive correlation in the first place 
+# not super strongly correlated 
+# so a linear model running on that is not going to be the best predictor of line quality 
+
+# good to have coefficient of determination so we get an idea of how well our model is really doing 
+# you want your coefficient of determination to be as close to 1 as possible because that means out of the total varation your model is explaining a really high percentage of it
+# not do more to chance 
+
+# this 0.01 varation is not really captured by our model very well
+
+# SKLEARN
