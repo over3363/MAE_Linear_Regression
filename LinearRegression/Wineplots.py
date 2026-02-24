@@ -189,3 +189,4 @@ print(f"Coefficient of determination: {r_squared}")
 # this 0.01 varation is not really captured by our model very well
 
 # SKLEARN
+# going to create a variable to store our linear regression model 
