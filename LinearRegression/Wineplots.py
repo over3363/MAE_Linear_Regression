@@ -189,4 +189,83 @@ print(f"Coefficient of determination: {r_squared}")
 # this 0.01 varation is not really captured by our model very well
 
 # SKLEARN
-# going to create a variable to store our linear regression model 
+# going to create a variable to store our linear regression model
+# LinearRegression is the class we imported from the library and we are going to instantiate it with open and close parenthesis ()
+# so we are telling the library to create an instance of the model we want
+linear_regression_model = LinearRegression()
+# this model expects data as input and has optional parameters you can call 
+# because you can do a multiple regression with this model , it expects a list of x variables 
+# brackets used beccause we are only going to give it one x value 
+# Expects a list of x variables since this can handle multiple regressions 
+# linear regression model going to call a function on it called fit 
+# function fit for the sklearn model API is going to fit the model to the data: essentially fit is usually the training step 
+# linear regression is such a small model its probably going to be a fast fit in this case 
+# When getting into more complicated models this is the line that is probably going to resolve in taking the most time 
+# if you have an older machine it may crunch on the fit function for a while 
+# fit wine dataframe and then double bracket because its expecting a list 
+# for the y value roll we are going to wine dataframe double bracket quality
+linear_regression_model.fit(wine_df[["alcohol"]], wine_df[["quality"]])
+
+# model m variable is our linear regression model 
+# and then we are going to directly grab the coefficient out of there, coefficient (coef_) and then 0 , 0 
+# there can be multiple coefficients , so we are just trying to grab the first one 
+model_m = linear_regression_model.coef_[0][0]
+
+# model b is going to be equal to the linear regression model intercept underscore 0 
+model_b = linear_regression_model.intercept_[0]
+
+# underscore _ is like an inherent property that is generally not publically accessable 
+# python is kinda weird with notation 
+
+print("For the Scikit Learn Regression Model")
+# going to do another regression equation
+print(f"Regression Equation: y = {model_m}x + {model_b}")
+
+# Predict the Same Value 
+# predicted model quality to linear regression model predict and then get the alcohol value
+predicted_model_quality = linear_regression_model.predict([[alcohol_val]])
+print(f"""For alcohol value {alcohol_val}, the predicted model quality was 
+{predicted_model_quality} and actual quality is {quality_val}""")
+# run program: pretty close even though the coefficients and whatnot are a little different 
+# coefficients being different mean theres a bug somewhere
+# can change row in now lets predict a value 
+# row = 2500 to row = 5 
+# run program: should get slightly different results but it is going to be pretty close to the adverage 
+# for alchol value 10.1 the predicted quality was 5.7 and the actual quality was 6
+
+# Get the coefficient of determination from the scikit model 
+# Coefficient of determination 
+# score is going to be equal to the linear regression model dot score 
+# score is usually how you create predictions or create evaluations on your model 
+# give score our wine dataframe double listed alchol and wine dataframe quality 
+# going to be able to figure that out because we are giving it the actual outcomes 
+score = linear_regression_model.score(wine_df[["alcohol"]], wine_df[["quality"]])
+
+# print that directly 
+# coefficient fo determination equal to that score variable 
+print(f"Coefficient of Determination: {score}")
+# run program: get a coefficient of determination of .18 
+# a little better than our custom model but not by much 
+# for our custom model there is either a coding mistake or an element of randomness in our sklearn model that isnt being accounted for in our custome model 
+
+#Plot the best Fit Line 
+plt.scatter(wine_df["alcohol"], wine_df["quality"])
+# plot function in matplotlib 
+# using same x variable but now we are using our prediction y variable which results to a line 
+# since the model is the equation of a line  
+plt.plot(wine_df["alcohol"], wine_df["predictions"], linestyle ="solid")
+plt.xlabel("alcohol")
+plt.ylabel("quality")
+plt.title("Alcohol VS Quality With Best Fit Line")
+plt.show()
+# might need to save it 
+# can see we have a best fit line that doesnt move a whole lot pretty close to the average 
+# maybe not a huge big wonder that maybe this isnt the greatest model for this situation 
+# this was the custom model 
+# we can get the predictions out of the linear regression model that we trained from sklearn
+# that might be a little more accurate (due to slight custom model mistake)
+# theres a predict function on the model API regression activities 
+
+#Use it with custom training set 
+# Training Set
+# Test Set
